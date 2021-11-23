@@ -1,0 +1,31 @@
+<h1>Wacky Widgets</h1>
+
+<% if (widgets.length === 0) { %>
+    <h3>No Widgets Exist</h3> <hr>
+<% } else { %>
+    <% widgets.forEach(el => { %> 
+        <div>
+        <%= el.description %>
+        </div>
+        <div>
+        <%= el.quantity %>
+        </div>
+        <form action="/<%= el.id %>/?_method=DELETE" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+    <% }) %>
+<% } %> 
+
+<!--Payload data for POST route to create a widget-->
+<h2>Add a Widget</h2>
+<form action="/" method="POST">
+    <div>
+        <label for="description">Description: </label>
+        <input type="text" name="description" id="description" value="Widget Description...">
+    </div>
+    <div>
+        <label for="quantity">Quantity: </label>
+        <input type="number" name="quantity" id="quantity">
+    </div>
+    <input type="submit">
+</form>
